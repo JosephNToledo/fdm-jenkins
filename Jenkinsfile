@@ -19,6 +19,7 @@ pipeline {
         stage('Your Name - Login to Dockerhub') {
             steps {
                 script {
+                    echo "Logging in to Docker Hub"
                     sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                     }
                 }
@@ -31,6 +32,6 @@ pipeline {
                     sh 'docker push $DOCKERHUB_USER/$IMAGE_NAME:latest'
                 }
             }
+        }
     }
 }
-
