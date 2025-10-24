@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKERHUB_USER = 'toledough'
-        IMAGE_NAME = 'fdm-jenkins-py'
+        IMAGE_NAME = 'fdm-jenkins-py-joseph'
     }
 
     stages {
