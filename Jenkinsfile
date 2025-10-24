@@ -4,7 +4,6 @@ pipeline {
     environment {
         DOCKERHUB_USER = 'toledough'
         IMAGE_NAME = 'fdm-jenkins-py'
-        DOCKERHUB_CREDENTIALS=credentials('docker-joe')
     }
 
     stages {
@@ -20,7 +19,8 @@ pipeline {
             steps {
                 script {
                     echo "Logging in to Docker Hub"
-                    sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                    withCredentials([usernamePassword(credentialsId: 'docker-joe', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                        sh 'echo $PASSWORD | docker login -u $USERNAME --password-stdin'
                     }
                 }
             }
