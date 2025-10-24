@@ -31,6 +31,6 @@ pipeline {
                     sh 'docker push $DOCKERHUB_USER/$IMAGE_NAME:latest'
                 }
             }
-        }
     }
 }
+
